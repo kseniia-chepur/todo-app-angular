@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+$default-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$magenta-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+$compact-theme: mat.define-theme(
+  (
+    density: (
+      scale: -5,
+    ),
+  )
+);
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 auto;
+  height: 90vh;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url("./assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  @include mat.all-component-themes($default-theme);
+  @include mat.form-field-density($compact-theme);
+}
+
+@include mat.color-variants-backwards-compatibility($default-theme);

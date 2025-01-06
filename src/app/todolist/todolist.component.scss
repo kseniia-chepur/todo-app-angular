@@ -1,0 +1,88 @@
+@use "@angular/material" as mat;
+@use "./../../styles.scss" as styles;
+
+  $dark-yellow-c: #ffc107;
+  $dark-cyan-c: #009688;
+  $box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  $border-r: 15px;
+
+
+.container {
+  margin: 5vh auto;
+  padding: 10px 35px 50px;
+  box-shadow: $box-shadow;
+  border-radius: $border-r;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 2px;
+  color: mat.get-theme-color(styles.$default-theme, primary);
+  font-variant: small-caps;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.form {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $box-shadow;
+  border-radius:  $border-r;
+  padding-block: 25px;
+
+  &-field {
+    width: 90%;
+  }
+
+  &-actions {
+    margin-top: 20px;
+  }
+
+  &-button {
+    padding-inline: 40px;
+    font-size: 1.1rem;
+  }
+}
+
+.table {
+  background: transparent;
+  box-shadow: $box-shadow;
+  border-radius: $border-r;
+  padding-block: 20px;
+}
+
+.mat-mdc-form-field-input-control.completed {
+  text-decoration: line-through;
+}
+
+.column-header {
+  font-size: 1.1rem;
+
+  &--button {
+    padding-left: 35px;
+  }
+}
+
+.mdc-data-table__row:last-child .mat-mdc-cell {
+  border-bottom-color: var(
+    --mat-table-row-item-outline-color,
+    var(--mat-sys-outline, rgba(0, 0, 0, 0.12))
+  );
+  border-bottom-width: var(--mat-table-row-item-outline-width, 1px);
+  border-bottom-style: solid;
+}
+
+.mat-mdc-raised-button.edit-button {
+  color: $dark-yellow-c;
+}
+
+.mat-mdc-raised-button.save-button {
+  color: $dark-cyan-c;
+}
+
+.mat-mdc-raised-button.delete-button {
+  color: mat.get-theme-color(styles.$default-theme, tertiary, 30);
+}
