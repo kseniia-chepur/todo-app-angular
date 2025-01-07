@@ -1,19 +1,20 @@
 @use "@angular/material" as mat;
 @use "./../../styles.scss" as styles;
 
-  $dark-yellow-c: #ffc107;
-  $dark-cyan-c: #009688;
-  $box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  $border-r: 15px;
+$dark-yellow-c: #ffc107;
+$dark-cyan-c: #009688;
 
+$border: solid mat.get-theme-color(styles.$default-theme, primary, 80);
+$border-r: 15px;
+$box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 .container {
   margin: 5vh auto;
   padding: 15px 35px;
   box-shadow: $box-shadow;
   border-radius: $border-r;
-  border: 3px solid mat.get-theme-color(styles.$default-theme, primary, 80);
+  border: 3px $border;
 }
 
 .title {
@@ -31,9 +32,9 @@
   flex-direction: column;
   align-items: center;
   box-shadow: $box-shadow;
-  border-radius:  $border-r;
+  border-radius: $border-r;
   padding-block: 25px;
-  border: 2px solid mat.get-theme-color(styles.$default-theme, primary, 80);
+  border: 2px $border;
 
   &-field {
     width: 90%;
@@ -54,11 +55,7 @@
   box-shadow: $box-shadow;
   border-radius: $border-r;
   padding: 20px 10px;
-  border: 2px solid mat.get-theme-color(styles.$default-theme, primary, 80);
-}
-
-.mat-mdc-form-field-input-control.completed {
-  text-decoration: line-through;
+  border: 2px $border;
 }
 
 .column-header {
@@ -67,6 +64,10 @@
   &--button {
     padding-left: 35px;
   }
+}
+
+.mat-mdc-form-field-input-control.completed {
+  text-decoration: line-through;
 }
 
 .mdc-data-table__row:last-child .mat-mdc-cell {
