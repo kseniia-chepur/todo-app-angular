@@ -4,8 +4,8 @@ $default-theme: mat.define-theme(
   (
     color: (
       theme-type: light,
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
+      primary: mat.$violet-palette,
+      tertiary: mat.$magenta-palette,
     ),
     density: (
       scale: 0,
@@ -20,7 +20,6 @@ $compact-theme: mat.define-theme(
     ),
   )
 );
-
 
 * {
   margin: 0;
@@ -42,7 +41,6 @@ body {
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 :root {

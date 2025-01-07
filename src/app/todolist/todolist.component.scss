@@ -10,9 +10,10 @@
 
 .container {
   margin: 5vh auto;
-  padding: 10px 35px 50px;
+  padding: 15px 35px 40px;
   box-shadow: $box-shadow;
   border-radius: $border-r;
+  border: 3px solid mat.get-theme-color(styles.$default-theme, primary, 80);
 }
 
 .title {
@@ -32,6 +33,7 @@
   box-shadow: $box-shadow;
   border-radius:  $border-r;
   padding-block: 25px;
+  border: 2px solid mat.get-theme-color(styles.$default-theme, primary, 80);
 
   &-field {
     width: 90%;
@@ -51,7 +53,8 @@
   background: transparent;
   box-shadow: $box-shadow;
   border-radius: $border-r;
-  padding-block: 20px;
+  padding: 20px 10px;
+  border: 2px solid mat.get-theme-color(styles.$default-theme, primary, 80);
 }
 
 .mat-mdc-form-field-input-control.completed {
@@ -84,5 +87,5 @@
 }
 
 .mat-mdc-raised-button.delete-button {
-  color: mat.get-theme-color(styles.$default-theme, tertiary, 30);
+  color: mat.get-theme-color(styles.$default-theme, primary, 30);
 }
