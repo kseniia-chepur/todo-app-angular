@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Task } from '../interface/task';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-todolist',
@@ -19,6 +21,7 @@ import { Task } from '../interface/task';
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    MatSortModule,
   ],
   templateUrl: './todolist.component.html',
   styleUrl: './todolist.component.scss',
@@ -33,6 +36,13 @@ export class TodolistComponent implements OnInit {
     'Delete',
   ];
   dataSource: MatTableDataSource<Task>;
+  private _liveAnnouncer = inject(LiveAnnouncer);
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   ngOnInit(): void {
     this.getFromLocalStorage();
@@ -86,5 +96,13 @@ export class TodolistComponent implements OnInit {
 
     this.dataSource._updateChangeSubscription();
     this.storeInLocalStorage();
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }
