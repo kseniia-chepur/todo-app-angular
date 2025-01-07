@@ -10,7 +10,7 @@
 
 .container {
   margin: 5vh auto;
-  padding: 15px 35px 40px;
+  padding: 15px 35px;
   box-shadow: $box-shadow;
   border-radius: $border-r;
   border: 3px solid mat.get-theme-color(styles.$default-theme, primary, 80);
@@ -88,4 +88,8 @@
 
 .mat-mdc-raised-button.delete-button {
   color: mat.get-theme-color(styles.$default-theme, primary, 30);
+}
+
+.task-paginator {
+  background: transparent;
 }

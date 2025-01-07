@@ -7,8 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Task } from '../interface/task';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-todolist',
@@ -22,6 +22,7 @@ import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
     MatButtonModule,
     FormsModule,
     MatSortModule,
+    MatPaginatorModule,
   ],
   templateUrl: './todolist.component.html',
   styleUrl: './todolist.component.scss',
@@ -36,12 +37,13 @@ export class TodolistComponent implements OnInit {
     'Delete',
   ];
   dataSource: MatTableDataSource<Task>;
-  private _liveAnnouncer = inject(LiveAnnouncer);
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {
@@ -96,13 +98,5 @@ export class TodolistComponent implements OnInit {
 
     this.dataSource._updateChangeSubscription();
     this.storeInLocalStorage();
-  }
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
   }
 }
