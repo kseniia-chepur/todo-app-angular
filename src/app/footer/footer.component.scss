@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+@use "./../../styles.scss" as styles;
+
+footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: mat.get-theme-color(styles.$default-theme, primary);
+  font-size: 0.8rem;
+  font-style: italic;
+
+  & a {
+    color: mat.get-theme-color(styles.$default-theme, primary, 30);
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
